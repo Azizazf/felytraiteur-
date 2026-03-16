@@ -1,0 +1,25 @@
+.nav {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 40px; height:60px;
+  background:var(--nav-bg);
+  border-bottom:1px solid var(--nav-b);
+  position:sticky; top:0; z-index:100;
+  backdrop-filter:blur(10px);
+  gap:20px;
+  transition:background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.scrolled { box-shadow:0 2px 20px rgba(184,134,42,0.08); }
+.logo { font-family:var(--font-d); font-size:18px; color:var(--gold); letter-spacing:4px; font-weight:400; text-decoration:none; white-space:nowrap; flex-shrink:0; }
+.links { display:flex; gap:26px; flex:1; justify-content:center; }
+.link { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-2); text-decoration:none; padding-bottom:2px; border-bottom:1px solid transparent; transition:color 0.2s, border-color 0.2s; white-space:nowrap; }
+.link:hover,.active { color:var(--gold); border-bottom-color:var(--gold); }
+.right { display:flex; align-items:center; gap:10px; flex-shrink:0; }
+.themeBtn { width:34px; height:34px; border:1px solid rgba(184,134,42,0.4); background:transparent; cursor:pointer; font-size:14px; color:var(--gold); display:flex; align-items:center; justify-content:center; transition:all 0.2s; }
+.themeBtn:hover { background:var(--gold); color:#fff; }
+.cta { font-size:9px; letter-spacing:2px; text-transform:uppercase; background:var(--gold); color:#fff; padding:9px 20px; text-decoration:none; font-family:var(--font-b); font-weight:500; transition:background 0.2s; white-space:nowrap; }
+.cta:hover { background:var(--gold-light); }
+.burger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+.mobile { position:absolute; top:60px; left:0; right:0; background:var(--nav-bg); border-bottom:1px solid var(--nav-b); padding:16px 40px 20px; display:flex; flex-direction:column; gap:2px; backdrop-filter:blur(10px); }
+.mlink { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-2); text-decoration:none; padding:10px 0; border-bottom:1px solid var(--cream-3); transition:color 0.2s; }
+.mlink:hover { color:var(--gold); }
+@media(max-width:768px){ .links{display:none} .burger{display:flex} .cta{display:none} .nav{padding:0 20px} }
