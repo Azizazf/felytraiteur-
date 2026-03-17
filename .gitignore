@@ -1,3 +1,79 @@
+# ============================================
+#   .gitignore — Fely Traiteur
+# ============================================
+
+# --- Dépendances ---
+node_modules/
+.pnp
+.pnp.js
+
+# --- Variables d'environnement (NE JAMAIS push) ---
+.env
+.env.local
+.env.development
+.env.production
+.env*.local
+.env.local.example.
+
+# --- Build / Génération ---
+.next/
+out/
+dist/
+build/
+.nuxt/
+
+# --- Cache ---
+.cache/
+.parcel-cache/
+.turbo/
+
+# --- Logs ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+
+# --- Uploads / Médias locaux ---
+uploads/
+public/uploads/
+*.mp4
+*.mov
+*.avi
+
+# --- Fichiers sensibles ---
+secrets.json
+config.local.js
+firebase-adminsdk*.json
+serviceAccountKey.json
+
+# --- OS ---
+.DS_Store
+.DS_Store?
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# --- Éditeurs ---
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# --- Tests ---
+coverage/
+.nyc_output/
+
+# --- Divers ---
+*.zip
+*.tar.gz
+.vercel
+.netlify
+
 node_modules/
 .next/
 .env.local
