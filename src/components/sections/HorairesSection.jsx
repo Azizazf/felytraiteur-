@@ -17,34 +17,33 @@ export default function HorairesSection() {
           </h2>
         </div>
 
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'52px' }}>
-
-          {/* Left */}
+        {/* 2 cols → 1 col mobile */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '48px',
+        }}>
           <div ref={leftRef} className="reveal-left">
             <div className="open-badge"><div className="open-dot"/><span className="open-text">Ouvert maintenant · 7j/7</span></div>
             <table style={{ width:'100%', borderCollapse:'collapse', marginBottom:'24px' }}>
               <tbody>
                 {HORAIRES.map(h => (
                   <tr key={h.jour} style={{ borderBottom:'1px solid var(--cream-3)' }}>
-                    <td style={{ padding:'10px 0', fontSize:'12px', color:h.highlight?'var(--text-1)':'var(--text-2)', fontWeight:h.highlight?500:400 }}>
-                      {h.jour}
-                    </td>
-                    <td style={{ padding:'10px 0', fontSize:'12px', color:'var(--gold)', textAlign:'right', fontWeight:500 }}>
-                      {h.heure}
-                    </td>
+                    <td style={{ padding:'10px 0', fontSize:'12px', color:h.highlight?'var(--text-1)':'var(--text-2)', fontWeight:h.highlight?500:400 }}>{h.jour}</td>
+                    <td style={{ padding:'10px 0', fontSize:'12px', color:'var(--gold)', textAlign:'right', fontWeight:500 }}>{h.heure}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
-
+            {/* 3 info cards */}
             <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'1px', background:'var(--cream-3)' }}>
               {[
                 { icon:'📞', title:'Téléphone', value:SITE.phone },
                 { icon:'📍', title:'Adresse',   value:SITE.address.street },
                 { icon:'✉',  title:'Email',     value:SITE.email },
               ].map(c => (
-                <div key={c.title}
-                  style={{ background:'var(--bg)', padding:'16px 12px', textAlign:'center', borderTop:'2px solid transparent', transition:'border-color 0.25s, transform 0.25s', cursor:'default' }}
+                <div key={c.title} style={{ background:'var(--bg)', padding:'16px 12px', textAlign:'center',
+                  borderTop:'2px solid transparent', transition:'border-color 0.25s, transform 0.25s' }}
                   onMouseEnter={e => { e.currentTarget.style.borderTopColor='var(--gold)'; e.currentTarget.style.transform='translateY(-2px)' }}
                   onMouseLeave={e => { e.currentTarget.style.borderTopColor='transparent'; e.currentTarget.style.transform='none' }}
                 >
@@ -56,22 +55,11 @@ export default function HorairesSection() {
             </div>
           </div>
 
-          {/* Right — map */}
           <div ref={rightRef} className="reveal-right">
-            {/*
-              REMPLACER PAR :
-              <iframe
-                src="https://www.google.com/maps/embed?pb=VOTRE_CODE"
-                width="100%" height="250"
-                style={{ border:0 }} allowFullScreen loading="lazy"
-              />
-            */}
             <div className="map-placeholder" style={{ marginBottom:'10px' }}>
               <div className="map-grid-bg"/>
-              <div className="map-road-h" style={{ top:'40%' }}/>
-              <div className="map-road-h" style={{ top:'65%' }}/>
-              <div className="map-road-v" style={{ left:'35%' }}/>
-              <div className="map-road-v" style={{ left:'62%' }}/>
+              <div className="map-road-h" style={{ top:'40%' }}/><div className="map-road-h" style={{ top:'65%' }}/>
+              <div className="map-road-v" style={{ left:'35%' }}/><div className="map-road-v" style={{ left:'62%' }}/>
               <span className="map-pin-icon">📍</span>
               <span className="map-pin-label">Fely Traiteur</span>
               <span className="map-pin-addr">{SITE.address.full}</span>
@@ -80,7 +68,6 @@ export default function HorairesSection() {
               → Remplacer par Google Maps embed
             </p>
           </div>
-
         </div>
       </div>
     </section>

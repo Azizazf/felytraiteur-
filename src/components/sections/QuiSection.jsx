@@ -19,13 +19,19 @@ export default function QuiSection() {
           </h2>
         </div>
 
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'60px', alignItems:'center' }}>
+        {/* 2 colonnes → 1 colonne sur mobile */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '48px',
+          alignItems: 'center',
+        }}>
           <div>
             <div ref={textRef} className="reveal-left">
-              <p style={{ fontSize:'12px', color:'var(--text-2)', lineHeight:1.9, marginBottom:'14px' }}>
+              <p style={{ fontSize:'13px', color:'var(--text-2)', lineHeight:1.9, marginBottom:'14px' }}>
                 Fely Traiteur est un établissement multifonctionnel au cœur de Dakar, à Grand Mbao, alliant gastronomie sénégalaise authentique, fast-food savoureux et services traiteur événementiel haut de gamme.
               </p>
-              <p style={{ fontSize:'12px', color:'var(--text-2)', lineHeight:1.9 }}>
+              <p style={{ fontSize:'13px', color:'var(--text-2)', lineHeight:1.9 }}>
                 Fondé avec passion, nous nous sommes imposés comme une référence à Dakar en combinant authenticité culinaire et excellence du service. Notre équipe vous accueille 7j/7, de 07h à 23h.
               </p>
             </div>
@@ -37,17 +43,14 @@ export default function QuiSection() {
               {STATS.map(s => (
                 <div key={s.label} className="reveal" style={{ background:'var(--bg)', padding:'18px 12px', textAlign:'center' }}>
                   <div style={{ fontFamily:'var(--font-d)', fontSize:'30px', color:'var(--gold)', lineHeight:1, marginBottom:'5px' }}>{s.value}</div>
-                  <div style={{ fontSize:'8px', letterSpacing:'2px', textTransform:'uppercase', color:'var(--text-3)' }}>{s.label}</div>
+                  <div style={{ fontSize:'9px', letterSpacing:'2px', textTransform:'uppercase', color:'var(--text-3)' }}>{s.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div
-            ref={photoRef}
-            className="reveal-right"
-            style={{ height:'300px', background:'var(--cream)', border:'var(--border)', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:'12px' }}
-          >
+          <div ref={photoRef} className="reveal-right"
+            style={{ height:'300px', background:'var(--cream)', border:'var(--border)', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:'12px' }}>
             <span style={{ fontSize:'80px', opacity:0.18 }}>🍽</span>
             <span style={{ fontSize:'9px', letterSpacing:'2px', textTransform:'uppercase', color:'var(--text-3)' }}>Votre photo ici</span>
           </div>

@@ -70,3 +70,41 @@ body { font-family: var(--font-b); background: var(--bg); color: var(--text-1); 
 .stagger > *:nth-child(4) { transition-delay:0.24s; }
 .stagger > *:nth-child(5) { transition-delay:0.32s; }
 .stagger > *:nth-child(6) { transition-delay:0.40s; }
+
+/* ══════════════════════════════════════
+   RESPONSIVE — Mobile first
+   ══════════════════════════════════════ */
+
+/* Tablette — max 900px */
+@media (max-width: 900px) {
+  /* Sections padding réduit */
+  section { padding-left: 20px !important; padding-right: 20px !important; }
+
+  /* Grilles 2 colonnes → 1 colonne */
+  .grid-2col { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+  /* Grilles 3 colonnes → 2 colonnes */
+  .grid-3col { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Contact 2 colonnes → 1 colonne */
+  .grid-contact { grid-template-columns: 1fr !important; }
+
+  /* Footer déjà géré dans Footer.module.css */
+
+  /* Section wrap padding */
+  .section-wrap { padding: 0; }
+}
+
+/* Mobile — max 600px */
+@media (max-width: 600px) {
+  /* Toutes les grilles → 1 colonne */
+  .grid-2col,
+  .grid-3col,
+  .grid-contact { grid-template-columns: 1fr !important; }
+
+  /* Formulaire field-row → 1 colonne */
+  .field-row { grid-template-columns: 1fr !important; }
+
+  /* Padding global réduit */
+  section { padding-top: 48px !important; padding-bottom: 48px !important; }
+}

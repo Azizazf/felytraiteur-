@@ -1,7 +1,7 @@
 export const SITE = {
   name:     'Fely Traiteur',
   tagline:  'On ne pouvait pas rêver mieux',
-  sub:      'Restaurant · Fast-Food · Traiteur · Glacier',
+  sub:      'Restaurant · Fast-Food · Dibiterie · Patissérie · Traiteur · Glacier',
   phone:    '+221 77 653 60 02',
   email:    'felydiouf8@gmail.com',
   address: {
@@ -11,7 +11,7 @@ export const SITE = {
     country: 'Sénégal',
     full:    'Cité Baobab, Grand Mbao, Dakar',
   },
-  hours:   '07h00 – 23h00',
+  hours:   '07h00 – 02h00',
   days:    'Ouvert 7j/7',
   social: {
     instagram: 'https://instagram.com/fely_traiteur_officiel',
@@ -62,9 +62,9 @@ export const SERVICES = [
 ]
 
 export const HORAIRES = [
-  { jour:'Tous les jours', heure:'07h00 – 23h00', highlight:true },
+  { jour:'Tous les jours', heure:'07h00 – 02h00', highlight:true },
   { jour:'Service continu', heure:'Non-stop' },
-  { jour:'Livraison',       heure:'08h00 – 22h00' },
+  { jour:'Livraison',       heure:'08h00 – 23h00' },
   { jour:'Traiteur sur RDV',heure:'24h à l\'avance' },
 ]
 
