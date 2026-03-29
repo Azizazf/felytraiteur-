@@ -1,7 +1,7 @@
 export const SITE = {
   name:     'Fely Traiteur',
   tagline:  'On ne pouvait pas rêver mieux',
-  sub:      'Restaurant · Fast-Food · Dibiterie · Patissérie · Traiteur · Glacier',
+  sub:      'Restaurant · Fast-Food · Traiteur · Glacier',
   phone:    '+221 77 653 60 02',
   email:    'felydiouf8@gmail.com',
   address: {
@@ -11,7 +11,7 @@ export const SITE = {
     country: 'Sénégal',
     full:    'Cité Baobab, Grand Mbao, Dakar',
   },
-  hours:   '07h00 – 02h00',
+  hours:   '07h00 – 23h00',
   days:    'Ouvert 7j/7',
   social: {
     instagram: 'https://instagram.com/fely_traiteur_officiel',
@@ -30,11 +30,41 @@ export const NAV_LINKS = [
 ]
 
 export const SLIDES = [
-  { id:1, food:'🍗🥘', bg:'linear-gradient(135deg,#0f0800,#2d1a00,#3d2400)' },
-  { id:2, food:'🥘🌿', bg:'linear-gradient(135deg,#080f00,#1a3d00,#243d00)' },
-  { id:3, food:'🎂🧁', bg:'linear-gradient(135deg,#0f0000,#3d0800,#3d1500)' },
-  { id:4, food:'🥩🔥', bg:'linear-gradient(135deg,#04080f,#00153d,#001030)' },
-  { id:5, food:'🍦🧊', bg:'linear-gradient(135deg,#080414,#150028,#200040)' },
+  {
+    id: 1,
+    label: 'Fast-Food & Snacking',
+    alt:   'Poulet-frites Fely Traiteur',
+    image: null,  // → '/images/slides/slide-1.jpg'
+    bg:    'linear-gradient(135deg,#0f0800,#2d1a00,#3d2400)', // fallback si pas d'image
+  },
+  {
+    id: 2,
+    label: 'Cuisine Sénégalaise',
+    alt:   'Cuisine africaine Fely Traiteur',
+    image: null,  // → '/images/slides/slide-2.jpg'
+    bg:    'linear-gradient(135deg,#080f00,#1a3d00,#243d00)',
+  },
+  {
+    id: 3,
+    label: 'Pâtisserie & Glacier',
+    alt:   'Pâtisserie Fely Traiteur',
+    image: null,  // → '/images/slides/slide-3.jpg'
+    bg:    'linear-gradient(135deg,#0f0000,#3d0800,#3d1500)',
+  },
+  {
+    id: 4,
+    label: 'Dibiterie',
+    alt:   'Dibiterie Fely Traiteur',
+    image: null,  // → '/images/slides/slide-4.jpg'
+    bg:    'linear-gradient(135deg,#04080f,#00153d,#001030)',
+  },
+  {
+    id: 5,
+    label: 'Traiteur & Événements',
+    alt:   'Service traiteur Fely Traiteur',
+    image: null,  // → '/images/slides/slide-5.jpg'
+    bg:    'linear-gradient(135deg,#080414,#150028,#200040)',
+  },
 ]
 
 export const STATS = [
@@ -44,12 +74,54 @@ export const STATS = [
 ]
 
 export const SPECIALITES = [
-  { id:'ff', emoji:'🍗', label:'Fast-Food',           title:'Fast-Food & Snacking',     desc:'Poulet-frites, burgers maison, sandwichs généreux préparés chaque jour avec des produits frais.',         bgLight:'linear-gradient(145deg,#fff8ee,#f5e4c0)', bgDark:'linear-gradient(145deg,#1a0d00,#3d2200)' },
-  { id:'cs', emoji:'🥘', label:'Cuisine Sénégalaise', title:'Cuisine Africaine',         desc:'Thiéboudienne, Yassa, Mafé… nos recettes traditionnelles aux saveurs authentiques du Sénégal.',           bgLight:'linear-gradient(145deg,#f0f8ee,#d4edcc)', bgDark:'linear-gradient(145deg,#001a08,#003d18)' },
-  { id:'pa', emoji:'🎂', label:'Pâtisserie',           title:'Pâtisserie & Viennoiseries',desc:'Gâteaux sur commande, viennoiseries fraîches, tartes et entremets réalisés avec soin.',                   bgLight:'linear-gradient(145deg,#fff0ee,#f5d0c8)', bgDark:'linear-gradient(145deg,#1a0000,#3d0800)' },
-  { id:'di', emoji:'🥩', label:'Dibiterie',            title:'Dibiterie',                 desc:'Viande grillée au charbon, dibi haoussa, mouton rôti servi avec moutarde et oignons traditionnels.',       bgLight:'linear-gradient(145deg,#eef0f8,#c8d0ed)', bgDark:'linear-gradient(145deg,#00101a,#00253d)' },
-  { id:'gl', emoji:'🍦', label:'Glacier',              title:'Glacier & Brunch',          desc:'Glaces artisanales aux parfums locaux, brunchs du weekend, petits-déjeuners complets et jus frais.',       bgLight:'linear-gradient(145deg,#f8f0ff,#e0ccf5)', bgDark:'linear-gradient(145deg,#150a1a,#2d1840)' },
-  { id:'tr', emoji:'🎉', label:'Traiteur Événements',  title:'Traiteur & Événementiel',   desc:'Mariages, baptêmes, séminaires, anniversaires. Service complet clé en main. Devis entièrement gratuit.', bgLight:'linear-gradient(145deg,#f8ffee,#d8edc8)', bgDark:'linear-gradient(145deg,#0a1a00,#1a3d00)' },
+  {
+    id:'ff', emoji:'🍗', label:'Fast-Food',
+    title:'Fast-Food & Snacking',
+    desc:'Poulet-frites croustillants, burgers maison généreux, sandwichs savoureux — préparés chaque jour avec des produits frais pour un repas rapide et délicieux.',
+    image: null, // → remplacer par '/images/specialites/fast-food.jpg'
+    bgLight:'linear-gradient(145deg,#fff8ee,#f5e4c0)',
+    bgDark:'linear-gradient(145deg,#1a0d00,#3d2200)',
+  },
+  {
+    id:'cs', emoji:'🥘', label:'Cuisine Sénégalaise',
+    title:'Cuisine Africaine',
+    desc:'Thiéboudienne, Yassa, Mafé… nos recettes traditionnelles préparées avec amour, aux saveurs authentiques qui font la fierté de la gastronomie sénégalaise.',
+    image: null, // → remplacer par '/images/specialites/cuisine.jpg'
+    bgLight:'linear-gradient(145deg,#f0f8ee,#d4edcc)',
+    bgDark:'linear-gradient(145deg,#001a08,#003d18)',
+  },
+  {
+    id:'pa', emoji:'🎂', label:'Pâtisserie',
+    title:'Pâtisserie & Viennoiseries',
+    desc:'Gâteaux sur commande personnalisés, viennoiseries fraîches du matin, tartes et entremets réalisés avec soin par notre équipe chaque jour.',
+    image: null, // → remplacer par '/images/specialites/patisserie.jpg'
+    bgLight:'linear-gradient(145deg,#fff0ee,#f5d0c8)',
+    bgDark:'linear-gradient(145deg,#1a0000,#3d0800)',
+  },
+  {
+    id:'di', emoji:'🥩', label:'Dibiterie',
+    title:'Dibiterie',
+    desc:'Viande grillée au charbon de bois, dibi haoussa fondant, mouton rôti servi avec moutarde et oignons. Une spécialité incontournable de Dakar.',
+    image: null, // → remplacer par '/images/specialites/dibiterie.jpg'
+    bgLight:'linear-gradient(145deg,#eef0f8,#c8d0ed)',
+    bgDark:'linear-gradient(145deg,#00101a,#00253d)',
+  },
+  {
+    id:'gl', emoji:'🍦', label:'Glacier',
+    title:'Glacier & Brunch',
+    desc:'Glaces artisanales aux parfums locaux — bissap, tamarin, mangue. Brunchs complets du weekend, petits-déjeuners et jus frais pressés.',
+    image: null, // → remplacer par '/images/specialites/glacier.jpg'
+    bgLight:'linear-gradient(145deg,#f8f0ff,#e0ccf5)',
+    bgDark:'linear-gradient(145deg,#150a1a,#2d1840)',
+  },
+  {
+    id:'tr', emoji:'🎉', label:'Traiteur Événements',
+    title:'Traiteur & Événementiel',
+    desc:'Mariages, baptêmes, séminaires, anniversaires. Service traiteur complet clé en main avec décoration et personnel. Devis gratuit sous 24h.',
+    image: null, // → remplacer par '/images/specialites/traiteur.jpg'
+    bgLight:'linear-gradient(145deg,#f8ffee,#d8edc8)',
+    bgDark:'linear-gradient(145deg,#0a1a00,#1a3d00)',
+  },
 ]
 
 export const SERVICES = [
@@ -62,9 +134,9 @@ export const SERVICES = [
 ]
 
 export const HORAIRES = [
-  { jour:'Tous les jours', heure:'07h00 – 02h00', highlight:true },
+  { jour:'Tous les jours', heure:'07h00 – 23h00', highlight:true },
   { jour:'Service continu', heure:'Non-stop' },
-  { jour:'Livraison',       heure:'08h00 – 23h00' },
+  { jour:'Livraison',       heure:'08h00 – 22h00' },
   { jour:'Traiteur sur RDV',heure:'24h à l\'avance' },
 ]
 
