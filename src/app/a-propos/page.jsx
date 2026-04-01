@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useReveal, useRevealGroup } from "@/hooks/useReveal";
 import { VALEURS, SITE } from "@/data/site";
-
 function ValeurCard({ item }) {
   const [hov, setHov] = useState(false);
   return (
@@ -12,7 +11,7 @@ function ValeurCard({ item }) {
         background: "var(--cream)",
         padding: "28px 24px",
         borderTop: hov ? "2px solid var(--gold)" : "2px solid transparent",
-        transition: "border-color 0.25s",
+        transition: "border-color .25s",
       }}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
@@ -23,7 +22,7 @@ function ValeurCard({ item }) {
           display: "block",
           marginBottom: "13px",
           transform: hov ? "scale(1.15)" : "scale(1)",
-          transition: "transform 0.3s",
+          transition: "transform .3s",
         }}
       >
         {item.emoji}
@@ -44,18 +43,15 @@ function ValeurCard({ item }) {
     </div>
   );
 }
-
 export default function AProposPage() {
-  const titleRef = useReveal();
-  const textRef = useReveal({ threshold: 0.1 });
-  const photoRef = useReveal({ threshold: 0.1 });
-  const engHead = useReveal();
-  const engGrid = useRevealGroup({ stagger: 110 });
-  const merciRef = useReveal({ threshold: 0.2 });
-
+  const titleRef = useReveal(),
+    textRef = useReveal({ threshold: 0.1 }),
+    photoRef = useReveal({ threshold: 0.1 });
+  const engHead = useReveal(),
+    engGrid = useRevealGroup({ stagger: 110 }),
+    merciRef = useReveal({ threshold: 0.2 });
   return (
     <>
-      {/* ── 1. Hero 2 colonnes → 1 sur mobile ── */}
       <section
         style={{
           padding: "72px 40px",
@@ -67,7 +63,7 @@ export default function AProposPage() {
           className="section-wrap"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
             gap: "52px",
             alignItems: "start",
           }}
@@ -134,12 +130,10 @@ export default function AProposPage() {
                   lineHeight: 1.75,
                 }}
               >
-                "On ne pouvait pas rêver mieux — c'est la philosophie qui guide
-                chacun de nos plats et chacun de nos services."
+                "On ne pouvait pas rêver mieux."
               </blockquote>
             </div>
           </div>
-
           <div
             ref={photoRef}
             className="reveal-right"
@@ -168,8 +162,6 @@ export default function AProposPage() {
           </div>
         </div>
       </section>
-
-      {/* ── 2. Engagements ── */}
       <section
         style={{
           padding: "72px 40px",
@@ -198,13 +190,12 @@ export default function AProposPage() {
               Pourquoi nous choisir ?
             </h2>
           </div>
-          {/* auto-fit → 3 cols desktop, 1 mobile */}
           <div
             ref={engGrid}
             className="stagger"
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
               gap: "1px",
               background: "var(--cream-3)",
             }}
@@ -215,8 +206,6 @@ export default function AProposPage() {
           </div>
         </div>
       </section>
-
-      {/* ── 3. Message fidélisation ── */}
       <section
         style={{
           padding: "80px 40px",
@@ -246,9 +235,7 @@ export default function AProposPage() {
             }}
           >
             "Merci à toute notre clientèle fidèle qui nous fait confiance depuis
-            notre création. Votre satisfaction est notre plus belle récompense
-            et notre moteur quotidien. Nous sommes fiers de vous servir chaque
-            jour et nous nous engageons à toujours faire mieux."
+            notre création. Votre satisfaction est notre plus belle récompense."
           </blockquote>
           <p
             style={{

@@ -1,27 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { useReveal, useRevealGroup } from "@/hooks/useReveal";
 import { SPECIALITES } from "@/data/site";
 
 function Card({ item }) {
   const [hov, setHov] = useState(false);
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    const check = () =>
-      setIsDark(document.documentElement.getAttribute("data-theme") === "dark");
-    check();
-    const obs = new MutationObserver(check);
-    obs.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
-    return () => obs.disconnect();
-  }, []);
-
-  const bg = isDark ? item.bgDark : item.bgLight;
-
+  const [err, setErr] = useState(false);
   return (
     <article
       className="reveal"
@@ -31,11 +16,12 @@ function Card({ item }) {
         overflow: "hidden",
         cursor: "pointer",
         transform: hov ? "translateY(-5px)" : "none",
-        transition: "transform 0.3s ease, border-color 0.25s",
+        transition: "transform .3s,border-color .25s",
       }}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
     >
+      {/* Zone image */}
       <div
         style={{
           height: "200px",
@@ -44,7 +30,7 @@ function Card({ item }) {
           background: "var(--cream)",
         }}
       >
-        {item.image ? (
+        {item.image && !err ? (
           <Image
             src={item.image}
             alt={item.title}
@@ -52,21 +38,22 @@ function Card({ item }) {
             style={{
               objectFit: "cover",
               transform: hov ? "scale(1.06)" : "scale(1)",
-              transition: "transform 0.5s ease",
+              transition: "transform .5s",
             }}
+            onError={() => setErr(true)}
           />
         ) : (
           <div
             style={{
               width: "100%",
               height: "100%",
-              background: bg,
+              background: item.bg,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontSize: "64px",
+              fontSize: "60px",
               transform: hov ? "scale(1.06)" : "scale(1)",
-              transition: "transform 0.5s ease",
+              transition: "transform .5s",
             }}
           >
             {item.emoji}
@@ -76,9 +63,9 @@ function Card({ item }) {
           style={{
             position: "absolute",
             inset: 0,
-            background: "rgba(0,0,0,0.25)",
+            background: "rgba(0,0,0,.2)",
             opacity: hov ? 1 : 0,
-            transition: "opacity 0.3s",
+            transition: "opacity .3s",
           }}
         />
         <div
@@ -88,23 +75,25 @@ function Card({ item }) {
             left: 0,
             right: 0,
             zIndex: 3,
-            background: hov ? "var(--gold)" : "rgba(14,10,4,0.78)",
+            background: hov ? "var(--gold)" : "rgba(14,10,4,.8)",
             padding: "9px 14px",
             fontSize: "10px",
             letterSpacing: "2px",
             textTransform: "uppercase",
             color: hov ? "#111" : "#fff",
-            transition: "all 0.3s",
+            fontFamily: "var(--font-b)",
+            transition: "all .3s",
           }}
         >
           {item.label}
         </div>
       </div>
+      {/* Body */}
       <div
         style={{
           padding: "20px 18px",
           borderTop: hov ? "2px solid var(--gold)" : "2px solid transparent",
-          transition: "border-color 0.3s",
+          transition: "border-color .3s",
         }}
       >
         <h3
@@ -130,7 +119,7 @@ function Card({ item }) {
             marginTop: "14px",
             opacity: hov ? 1 : 0,
             transform: hov ? "translateX(0)" : "translateX(-6px)",
-            transition: "all 0.3s",
+            transition: "all .3s",
           }}
         >
           Découvrir →
@@ -143,7 +132,6 @@ function Card({ item }) {
 export default function SpecialitesSection() {
   const headRef = useReveal();
   const gridRef = useRevealGroup({ stagger: 85 });
-
   return (
     <section
       style={{
@@ -170,13 +158,12 @@ export default function SpecialitesSection() {
             Ce que nous vous proposons
           </h2>
         </div>
-        {/* auto-fit → 3 cols sur desktop, 2 sur tablette, 1 sur mobile */}
         <div
           ref={gridRef}
           className="stagger"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
             gap: "1px",
             background: "var(--cream-3)",
           }}

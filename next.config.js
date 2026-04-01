@@ -2,7 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [],
+    remotePatterns: [],
+    // Ajouter les domaines externes si besoin
   },
 }
 module.exports = nextConfig

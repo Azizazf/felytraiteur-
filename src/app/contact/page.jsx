@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useReveal } from "@/hooks/useReveal";
 import { SITE, CONTACT_SUBJECTS } from "@/data/site";
-
 const INIT = {
   nom: "",
   telephone: "",
@@ -12,7 +11,6 @@ const INIT = {
   personnes: "",
   message: "",
 };
-
 function Field({
   label,
   name,
@@ -37,15 +35,13 @@ function Field({
     </div>
   );
 }
-
 export default function ContactPage() {
   const [form, setForm] = useState(INIT);
   const [status, setStatus] = useState(null);
-  const heroRef = useReveal();
-  const formRef = useReveal({ threshold: 0.05 });
-  const mapRef = useReveal({ threshold: 0.05 });
-  const bottomRef = useReveal({ threshold: 0.1 });
-
+  const heroRef = useReveal(),
+    formRef = useReveal({ threshold: 0.05 }),
+    mapRef = useReveal({ threshold: 0.05 }),
+    bottomRef = useReveal({ threshold: 0.1 });
   const update = (e) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   const submit = async (e) => {
@@ -62,10 +58,8 @@ export default function ContactPage() {
       setStatus("error");
     }
   };
-
   return (
     <>
-      {/* Hero */}
       <section
         style={{
           padding: "60px 40px 32px",
@@ -108,16 +102,13 @@ export default function ContactPage() {
           </p>
         </div>
       </section>
-
-      {/* 2 colonnes form + map → 1 colonne mobile */}
       <section style={{ borderTop: "1px solid var(--cream-3)" }}>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))",
           }}
         >
-          {/* Formulaire */}
           <div
             ref={formRef}
             className="reveal-left"
@@ -149,13 +140,12 @@ export default function ContactPage() {
             >
               Réservation · Devis · Question
             </p>
-
             {status === "ok" ? (
               <div
                 style={{
                   padding: "40px",
-                  background: "rgba(34,197,94,0.07)",
-                  border: "1px solid rgba(34,197,94,0.28)",
+                  background: "rgba(34,197,94,.07)",
+                  border: "1px solid rgba(34,197,94,.28)",
                   textAlign: "center",
                 }}
               >
@@ -272,8 +262,6 @@ export default function ContactPage() {
               </form>
             )}
           </div>
-
-          {/* Carte */}
           <div
             ref={mapRef}
             className="reveal-right"
@@ -290,15 +278,25 @@ export default function ContactPage() {
             >
               Nous trouver
             </h2>
-            <div className="map-placeholder" style={{ marginBottom: "18px" }}>
-              <div className="map-grid-bg" />
-              <div className="map-road-h" style={{ top: "38%" }} />
-              <div className="map-road-h" style={{ top: "62%" }} />
-              <div className="map-road-v" style={{ left: "33%" }} />
-              <div className="map-road-v" style={{ left: "60%" }} />
-              <span className="map-pin-icon">📍</span>
-              <span className="map-pin-label">Fely Traiteur</span>
-              <span className="map-pin-addr">{SITE.address.full}</span>
+            {/* Google Maps */}
+            <div
+              style={{
+                height: "240px",
+                overflow: "hidden",
+                border: "var(--border)",
+                marginBottom: "18px",
+              }}
+            >
+              <iframe
+                src={SITE.address.mapsEmbed}
+                width="100%"
+                height="240"
+                style={{ border: 0, display: "block" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Fely Traiteur"
+              />
             </div>
             {[
               {
@@ -313,16 +311,24 @@ export default function ContactPage() {
                 value: SITE.email,
                 href: `mailto:${SITE.email}`,
               },
-              { icon: "📍", label: "Adresse", value: SITE.address.full },
               {
-                icon: "📸",
-                label: "Instagram",
-                value: SITE.social.igHandle,
-                href: SITE.social.instagram,
+                icon: "📍",
+                label: "Adresse",
+                value: SITE.address.full,
+                href: SITE.address.mapsUrl,
+              },
+              {
+                icon: "💬",
+                label: "WhatsApp",
+                value: "Répondre rapide",
+                href: `https://wa.me/${SITE.whatsapp}`,
               },
             ].map((c) => (
-              <div
+              <a
                 key={c.label}
+                href={c.href}
+                target={c.href.startsWith("http") ? "_blank" : undefined}
+                rel="noreferrer"
                 style={{
                   display: "flex",
                   gap: "12px",
@@ -331,7 +337,8 @@ export default function ContactPage() {
                   background: "var(--bg)",
                   border: "var(--border)",
                   marginBottom: "6px",
-                  transition: "border-color 0.2s",
+                  textDecoration: "none",
+                  transition: "border-color .2s",
                 }}
                 onMouseEnter={(e) =>
                   (e.currentTarget.style.borderColor = "var(--gold)")
@@ -355,32 +362,15 @@ export default function ContactPage() {
                   >
                     {c.label}
                   </div>
-                  {c.href ? (
-                    <a
-                      href={c.href}
-                      target={c.href.startsWith("http") ? "_blank" : undefined}
-                      rel="noreferrer"
-                      style={{
-                        fontSize: "11px",
-                        color: "var(--text-1)",
-                        textDecoration: "none",
-                      }}
-                    >
-                      {c.value}
-                    </a>
-                  ) : (
-                    <span style={{ fontSize: "11px", color: "var(--text-1)" }}>
-                      {c.value}
-                    </span>
-                  )}
+                  <span style={{ fontSize: "11px", color: "var(--text-1)" }}>
+                    {c.value}
+                  </span>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Bande noire bas — 2 cols → 1 mobile */}
       <section
         style={{
           background: "var(--black)",
@@ -395,7 +385,7 @@ export default function ContactPage() {
             maxWidth: "1200px",
             margin: "0 auto",
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
             gap: "40px",
           }}
         >
@@ -435,7 +425,7 @@ export default function ContactPage() {
               style={{
                 width: "36px",
                 height: "1px",
-                background: "rgba(184,134,42,0.35)",
+                background: "rgba(184,134,42,.35)",
                 marginBottom: "16px",
               }}
             />
@@ -463,23 +453,18 @@ export default function ContactPage() {
               {SITE.address.city}, {SITE.address.country}
             </div>
           </div>
-          {/* 3 cards → s'empilent sur mobile */}
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))",
               gap: "1px",
-              background: "rgba(184,134,42,0.15)",
+              background: "rgba(184,134,42,.15)",
               alignSelf: "start",
             }}
           >
             {[
               { icon: "📞", title: "Téléphone", value: SITE.phone },
-              {
-                icon: "📍",
-                title: "Adresse",
-                value: `${SITE.address.street}\n${SITE.address.city}`,
-              },
+              { icon: "📍", title: "Adresse", value: SITE.address.street },
               { icon: "✉", title: "Email", value: SITE.email },
             ].map((c) => (
               <div
@@ -489,10 +474,10 @@ export default function ContactPage() {
                   padding: "24px 16px",
                   textAlign: "center",
                   border: "1px solid transparent",
-                  transition: "border-color 0.2s",
+                  transition: "border-color .2s",
                 }}
                 onMouseEnter={(e) =>
-                  (e.currentTarget.style.borderColor = "rgba(184,134,42,0.3)")
+                  (e.currentTarget.style.borderColor = "rgba(184,134,42,.3)")
                 }
                 onMouseLeave={(e) =>
                   (e.currentTarget.style.borderColor = "transparent")
@@ -521,9 +506,8 @@ export default function ContactPage() {
                 <div
                   style={{
                     fontSize: "10px",
-                    color: "rgba(184,134,42,0.85)",
+                    color: "rgba(184,134,42,.85)",
                     lineHeight: 1.65,
-                    whiteSpace: "pre-line",
                   }}
                 >
                   {c.value}
