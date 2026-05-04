@@ -1,0 +1,176 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 62px;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-b);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  gap: 16px;
+  transition: box-shadow 0.3s;
+}
+.scrolled {
+  box-shadow: 0 2px 20px rgba(184, 134, 42, 0.1);
+}
+.logo {
+  font-family: var(--font-d);
+  font-size: 18px;
+  color: var(--gold);
+  letter-spacing: 4px;
+  font-weight: 400;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.links {
+  display: flex;
+  gap: 22px;
+  flex: 1;
+  justify-content: center;
+}
+.link {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-2);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.link:hover,
+.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+.right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.ctaSecondary {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--gold);
+  padding: 9px 16px;
+  text-decoration: none;
+  font-family: var(--font-b);
+  font-weight: 500;
+  border: 1px solid var(--gold);
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.ctaSecondary:hover {
+  background: var(--gold);
+  color: #fff;
+}
+.cta {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: #111;
+  padding: 9px 18px;
+  text-decoration: none;
+  font-family: var(--font-b);
+  font-weight: 500;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.cta:hover {
+  background: var(--gold-light);
+}
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.mobile {
+  position: absolute;
+  top: 62px;
+  left: 0;
+  right: 0;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-b);
+  padding: 16px 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  backdrop-filter: blur(10px);
+}
+.mlink {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-2);
+  text-decoration: none;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--cream-3);
+  transition: color 0.2s;
+}
+.mlink:hover {
+  color: var(--gold);
+}
+.mobileBtns {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.mobileSec {
+  flex: 1;
+  padding: 11px;
+  text-align: center;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-family: var(--font-b);
+  font-weight: 500;
+}
+.mobileCta {
+  flex: 1;
+  padding: 11px;
+  text-align: center;
+  background: var(--gold);
+  color: #111;
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-family: var(--font-b);
+  font-weight: 500;
+}
+@media (max-width: 900px) {
+  .links {
+    display: none;
+  }
+  .burger {
+    display: flex;
+  }
+  .ctaSecondary {
+    display: none;
+  }
+  .nav {
+    padding: 0 20px;
+  }
+}
+@media (max-width: 600px) {
+  .cta {
+    font-size: 9px;
+    padding: 8px 12px;
+  }
+}
